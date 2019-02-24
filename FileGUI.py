@@ -1,4 +1,4 @@
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog,  simpledialog
 from tkinter import *
 import subprocess
 
@@ -28,6 +28,8 @@ class FileOpen:
     
     def importFile(self):
         
+        self.msg_complete.set('')
+        
         global filename
  
         filename = filedialog.askopenfilename(initialdir = "/",title = "Select file",
@@ -41,9 +43,15 @@ class FileOpen:
         rb_selection = self.v.get()
         
         if rb_selection == 1:
-            subprocess.call(['python', 'hello.py', filename], cwd='./scripts')
-            self.msg_complete.set('Finished!')
-    
+            if filename == '':
+                messagebox.showerror("ERROR", "No File Chosen")
+            else:
+                subprocess.call(['python', 'hello.py', filename], cwd='./scripts')
+                self.msg_complete.set('Finished!')
+            
+        if rb_selection == 2:
+            name = simpledialog.askstring('Name', 'What is your name?')
+            self.msg_complete.set('Hello ' + name)
 
 root = Tk()
 
