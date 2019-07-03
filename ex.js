@@ -12,3 +12,5 @@ $(document).ready(function () {
     $('#customSwitch1').change();
 
 });
+
+#https://stackoverflow.com/questions/56872706/jquery-hiding-table-rows-hide-vs-fadeout-stripe-table
